@@ -1,0 +1,708 @@
+/* RESET */
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    font-family:Georgia, serif;
+    overflow-x:hidden;
+    overflow-y:auto;
+    background:#fff;
+}
+
+/* ================= ENVELOPE SCREEN ================= */
+
+#envelopeScreen{
+    position:fixed;
+    inset:0;
+
+    background:linear-gradient(135deg,#fdfaf7,#ffffff);
+    
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    transition:opacity 1s ease;
+    z-index:10;
+}
+
+.container{
+    text-align:center;
+}
+
+.title{
+    font-size:58px;
+    font-weight:normal;
+    font-style:italic;
+    line-height:1.1;
+    color:#222;
+    margin-bottom:40px;
+    letter-spacing:1px;
+}
+
+/* envelope */
+.envelope-container{
+    cursor:pointer;
+}
+
+.envelope{
+    width:420px;
+    height:260px;
+    position:relative;
+    margin:auto;
+
+    filter:drop-shadow(0 15px 25px rgba(0,0,0,0.18));
+    transition:transform 0.3s ease;
+}
+
+.envelope-container:hover .envelope{
+    transform:scale(1.02);
+}
+
+/* base */
+.bottom-fold{
+    position:absolute;
+    width:100%;
+    height:100%;
+    background:linear-gradient(135deg,#f3f0ea,#e9e4dc);
+    border-radius:8px;
+}
+
+.left-fold{
+    position:absolute;
+    width:50%;
+    height:100%;
+    background:#e8e2d8;
+    clip-path:polygon(0 0,100% 50%,0 100%);
+    z-index:2;
+}
+
+.right-fold{
+    position:absolute;
+    right:0;
+    width:50%;
+    height:100%;
+    background:#e8e2d8;
+    clip-path:polygon(100% 0,0 50%,100% 100%);
+    z-index:2;
+}
+
+/* flap */
+.flap{
+    position:absolute;
+    top:0;
+    width:100%;
+    height:140px;
+    background:linear-gradient(135deg,#e6ded2,#ddd4c6);
+
+    clip-path:polygon(0 0,100% 0,50% 100%);
+    transform-origin:top;
+    transition:transform 1.5s ease;
+    z-index:6;
+}
+
+.open .flap{
+    transform:rotateX(180deg);
+}
+
+/* gold seal */
+.seal{
+    position:absolute;
+    width:92px;
+    height:92px;
+    border-radius:50%;
+    left:50%;
+    bottom:25px;
+    transform:translateX(-50%);
+    z-index:10;
+
+    background:radial-gradient(circle at 30% 30%, #ffeaa0, #d4af37, #a97f1f);
+
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+
+    box-shadow:
+    0 10px 25px rgba(212,175,55,.35),
+    inset 0 0 10px rgba(255,255,255,.6);
+
+    cursor:pointer;
+    transition:transform 0.3s ease;
+}
+
+.seal:hover{
+    transform:translateX(-50%) scale(1.05);
+}
+
+.initials{
+    font-size:20px;
+    font-weight:bold;
+    color:#5c4500;
+}
+
+.open-text{
+    font-size:9px;
+    margin-top:4px;
+    color:#5c4500;
+    text-transform:uppercase;
+    letter-spacing:1px;
+}
+
+.footer-text{
+    margin-top:30px;
+    font-size:30px;
+    font-style:italic;
+    color:#444;
+}
+
+/* ================= INVITATION SCREEN ================= */
+
+#invitationScreen{
+    position:fixed;
+    inset:0;
+
+    height:100vh;
+    overflow-y:auto;
+
+    opacity:0;
+    visibility:hidden;
+
+    transition:opacity 1s ease;
+
+    display:block;
+
+    background:
+    linear-gradient(
+        rgba(255,255,255,0.55),
+        rgba(255,248,235,0.60)
+    ),
+    url("https://images.unsplash.com/photo-1519225421980-715cb0215aed?auto=format&fit=crop&w=1600&q=80");
+
+    background-size:cover;
+    background-position:center;
+    background-attachment:fixed;
+}
+
+/* ================= HERO SECTION ================= */
+
+.hero{
+    height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+    color:#fff;
+
+    background:
+    linear-gradient(rgba(0,0,0,0.35),rgba(0,0,0,0.35)),
+    url("https://images.unsplash.com/photo-1523438097201-512ae7d59c8a?auto=format&fit=crop&w=1400&q=80");
+
+    background-size:cover;
+    background-position:center;
+}
+
+.hero-content{
+    padding:20px;
+}
+
+.couple{
+    width:200px;
+    margin-bottom:15px;
+    animation:float 4s ease-in-out infinite;
+}
+
+.names{
+    font-size:42px;
+    font-family:cursive;
+    color:#ffd97d;
+    letter-spacing:1px;
+}
+
+.names span{
+    color:#fff;
+}
+
+.date{
+    margin-top:10px;
+    font-size:22px;
+    color:#ffe9a8;
+}
+
+.scroll{
+    margin-top:20px;
+    animation:bounce 2s infinite;
+}
+
+/* ================= SECTIONS ================= */
+
+.section{
+    padding:80px 20px;
+    text-align:center;
+    background:rgba(255,247,239,0.92);
+    backdrop-filter: blur(3px);
+}
+
+.section h2{
+    font-size:38px;
+    color:#b8860b;
+    margin-bottom:15px;
+}
+
+.section p{
+    font-size:18px;
+    max-width:700px;
+    margin:auto;
+    line-height:1.8;
+    color:#444;
+}
+
+/* ================= MESSAGE SECTION ================= */
+
+.message-section{
+    text-align:center;
+}
+
+.intro-text{
+    font-size:22px;
+    margin-bottom:25px;
+    font-style:italic;
+    color:#555;
+}
+
+.names2{
+    font-family:'Great Vibes', cursive;
+    font-size:58px;
+    margin-bottom:35px;
+}
+
+.bride{
+    color:#b8860b;
+}
+
+.groom{
+    color:#8b5e3c;
+}
+
+.amp{
+    margin:0 10px;
+    color:#444;
+}
+
+/* ================= SCRATCH BOX (FIXED ONLY) ================= */
+
+.scratch-box{
+    position:relative;
+    width:300px;
+    height:130px;
+    margin:30px auto;
+
+    border-radius:16px;
+    overflow:hidden;
+
+    box-shadow:0 12px 30px rgba(0,0,0,0.25);
+    background:linear-gradient(135deg,#fffaf0,#fff);
+}
+
+/* hidden date */
+.hidden-date{
+    position:absolute;
+    inset:0;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    font-size:28px;
+    font-weight:bold;
+
+    background:transparent;
+    color:#b8860b;
+
+    z-index:1;
+}
+
+/* canvas FIX */
+#scratchCanvas{
+    position:absolute;
+    inset:0;
+    width:100%;
+    height:100%;
+    display:block;
+    z-index:2;
+    touch-action:none;
+}
+
+/* scratch text */
+.scratch-text{
+    position:absolute;
+    inset:0;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    font-size:18px;
+    font-weight:bold;
+    color:rgba(255,255,255,0.95);
+    text-shadow:0 2px 8px rgba(0,0,0,0.4);
+    letter-spacing:1px;
+
+    z-index:3;
+    pointer-events:none;
+}
+
+/* timer */
+.timer{
+    margin-top:40px;
+}
+
+.timer h3{
+    margin-bottom:10px;
+    color:#b8860b;
+}
+
+#countdown{
+    font-size:26px;
+    font-weight:bold;
+    color:#333;
+}
+
+/* ================= ANIMATIONS ================= */
+
+@keyframes float{
+    0%,100%{transform:translateY(0);}
+    50%{transform:translateY(-15px);}
+}
+
+@keyframes bounce{
+    0%,100%{transform:translateY(0);}
+    50%{transform:translateY(10px);}
+}
+
+/* ================= COUNTDOWN CARDS ================= */
+
+.countdown-container{
+    display:flex;
+    justify-content:center;
+    gap:12px;
+    margin-top:15px;
+    flex-wrap:wrap;
+}
+
+.time-card{
+    width:75px;
+    height:85px;
+    background:rgba(255,255,255,0.9);
+    border-radius:12px;
+
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+
+    box-shadow:0 8px 18px rgba(0,0,0,0.12);
+    backdrop-filter: blur(6px);
+
+    transition:transform 0.2s ease;
+}
+
+.time-card:hover{
+    transform:translateY(-4px);
+}
+
+.time-card span{
+    font-size:22px;
+    font-weight:bold;
+    color:#b8860b;
+}
+
+.time-card small{
+    font-size:11px;
+    color:#555;
+    margin-top:4px;
+    letter-spacing:1px;
+}
+
+
+/* ================= DATE GLOW ================= */
+.date-glow {
+    animation: dateGlow 1.5s ease-in-out infinite;
+}
+
+@keyframes dateGlow {
+    0% {
+        transform: scale(1);
+        text-shadow: 0 0 0px rgba(212,175,55,0);
+    }
+    50% {
+        transform: scale(1.08);
+        text-shadow: 0 0 25px rgba(212,175,55,0.9);
+    }
+    100% {
+        transform: scale(1);
+        text-shadow: 0 0 0px rgba(212,175,55,0);
+    }
+}
+
+
+/* ================= EVENTS SECTION (ENHANCED THEME) ================= */
+
+.events-section{
+    text-align:center;
+    padding:100px 20px;
+    position:relative;
+
+    background:
+    linear-gradient(rgba(255,255,255,0.75), rgba(255,250,240,0.85)),
+    url("https://images.unsplash.com/photo-1529634893837-1a9b0a3f7d05?auto=format&fit=crop&w=1600&q=80");
+
+    background-size:cover;
+    background-position:center;
+    background-attachment:fixed;
+}
+
+/* soft decorative glow overlay */
+.events-section::before{
+    content:"";
+    position:absolute;
+    inset:0;
+    background:radial-gradient(circle at top, rgba(212,175,55,0.15), transparent 60%);
+    pointer-events:none;
+}
+
+/* heading upgrade */
+.events-section h2{
+    font-size:44px;
+    color:#b8860b;
+    margin-bottom:40px;
+    letter-spacing:1px;
+    position:relative;
+    display:inline-block;
+}
+
+.events-section h2::after{
+    content:"";
+    width:60%;
+    height:3px;
+    background:linear-gradient(90deg, transparent, #d4af37, transparent);
+    position:absolute;
+    bottom:-10px;
+    left:20%;
+    border-radius:10px;
+}
+
+/* event card redesign */
+.event-card{
+    width:92%;
+    max-width:520px;
+    margin:25px auto;
+    padding:25px 22px;
+
+    border-radius:18px;
+
+    background:rgba(255,255,255,0.65);
+    backdrop-filter: blur(10px);
+
+    border:1px solid rgba(212,175,55,0.25);
+
+    box-shadow:
+        0 15px 35px rgba(0,0,0,0.10),
+        inset 0 0 20px rgba(255,255,255,0.4);
+
+    transition:all 0.4s ease;
+
+    position:relative;
+    overflow:hidden;
+}
+
+/* subtle gold shimmer effect */
+.event-card::before{
+    content:"";
+    position:absolute;
+    top:-50%;
+    left:-50%;
+    width:200%;
+    height:200%;
+    background:linear-gradient(
+        120deg,
+        transparent,
+        rgba(212,175,55,0.15),
+        transparent
+    );
+    transform:rotate(25deg);
+    transition:all 0.6s ease;
+}
+
+.event-card:hover::before{
+    left:100%;
+}
+
+.event-card:hover{
+    transform:translateY(-8px) scale(1.02);
+    box-shadow:0 20px 45px rgba(0,0,0,0.18);
+}
+
+/* title */
+.event-card h3{
+    font-size:24px;
+    color:#8b5e3c;
+    margin-bottom:12px;
+    font-weight:600;
+    letter-spacing:0.5px;
+}
+
+/* text */
+.event-card p{
+    font-size:16px;
+    line-height:1.7;
+    color:#444;
+}
+
+/* add subtle icon spacing look */
+.event-card p br{
+    line-height:2;
+}
+
+.map-card{
+    width:90%;
+    max-width:520px;
+    margin:25px auto;
+    padding:22px;
+
+    background:rgba(255,255,255,0.85);
+    border-radius:14px;
+
+    box-shadow:0 10px 25px rgba(0,0,0,0.12);
+    backdrop-filter: blur(5px);
+
+    text-align:center;
+
+    transition:transform 0.3s ease;
+}
+
+.map-card:hover{
+    transform:translateY(-5px);
+}
+
+.map-card h3{
+    font-size:22px;
+    color:#b8860b;
+    margin-bottom:10px;
+}
+
+.map-card p{
+    font-size:16px;
+    line-height:1.6;
+    color:#444;
+    margin-bottom:15px;
+}
+
+/* button */
+.map-button{
+    display:inline-block;
+    padding:10px 18px;
+
+    background:linear-gradient(135deg,#d4af37,#b8860b);
+    color:#fff;
+
+    border-radius:30px;
+    text-decoration:none;
+    font-weight:bold;
+
+    transition:0.3s ease;
+}
+
+.map-button:hover{
+    transform:scale(1.05);
+    box-shadow:0 10px 20px rgba(212,175,55,0.4);
+}
+
+/* ================= ENVELOPE SCREEN RESPONSIVE FIX ONLY ================= */
+
+/* Tablets */
+@media (max-width: 768px){
+
+    .title{
+        font-size:42px;
+        margin-bottom:25px;
+    }
+
+    .envelope{
+        width:340px;
+        height:210px;
+    }
+
+    .seal{
+        width:80px;
+        height:80px;
+    }
+
+    .footer-text{
+        font-size:22px;
+        margin-top:20px;
+    }
+}
+
+/* Mobile */
+@media (max-width: 480px){
+
+    #envelopeScreen{
+        padding:20px;
+    }
+
+    .title{
+        font-size:30px;
+        margin-bottom:20px;
+        line-height:1.2;
+    }
+
+    .envelope{
+        width:270px;
+        height:170px;
+    }
+
+    .seal{
+        width:70px;
+        height:70px;
+    }
+
+    .initials{
+        font-size:16px;
+    }
+
+    .open-text{
+        font-size:8px;
+    }
+
+    .footer-text{
+        font-size:18px;
+        margin-top:15px;
+    }
+}
+
+/* Very small phones */
+@media (max-width: 360px){
+
+    .title{
+        font-size:26px;
+    }
+
+    .envelope{
+        width:240px;
+        height:150px;
+    }
+
+    .seal{
+        width:65px;
+        height:65px;
+    }
+
+    .footer-text{
+        font-size:16px;
+    }
+}
