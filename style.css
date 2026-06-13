@@ -213,9 +213,12 @@ body{
 }
 
 .couple{
-    width:200px;
-    margin-bottom:15px;
-    animation:float 4s ease-in-out infinite;
+    width:220px;
+    border:6px solid #d4af37;
+    border-radius:20px;
+    padding:6px;
+    background:white;
+    box-shadow:0 15px 35px rgba(0,0,0,0.25);
 }
 
 .names{
